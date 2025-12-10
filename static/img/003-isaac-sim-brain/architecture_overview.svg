@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Architecture Overview Diagram Template (Neon Cyber AI Style)</title>
+    <desc>
+        This SVG file serves as a template for architecture overview diagrams in a "Neon Cyber AI" style.
+        Expected elements:
+        -   **Color Palette**: Dark background (e.g., deep blues, purples, blacks) with vibrant, glowing neon accents (e.g., electric blues, bright greens, fuchsia, cyber yellow).
+        -   **Shapes**: Geometric shapes (rectangles, circles, triangles) with sharp edges or subtle glows. Rounded corners should be minimal.
+        -   **Lines**: Thin, glowing lines to connect components, possibly animated or dashed for data flow.
+        -   **Text**: Sans-serif, futuristic fonts (e.g., a monospaced or slightly glitchy font) in neon colors.
+        -   **Icons**: Minimalist, abstract, or circuit-board-like icons for different modules (Isaac Sim, Isaac ROS, Nav2).
+        -   **Effects**: Subtle gradient fills, inner/outer glows, scanline/glitch effects, binary code patterns in the background.
+        -   **Overall Feel**: High-tech, futuristic, slightly abstract, emphasizing data and AI processing.
+
+        This diagram should visually represent the high-level architecture of the AI-Robot Brain module, showing the main components (Isaac Sim, Isaac ROS, Nav2, Robot Hardware/Physical AI), their interactions, and data flow.
+    </desc>
+
+    <!-- Example Placeholder for a component (e.g., Isaac Sim) -->
+    <!--
+    <rect x="50" y="50" width="150" height="80" fill="#1A2B3C" stroke="#00FFFF" stroke-width="2">
+        <animate attributeName="opacity" values="1;0.8;1" dur="4s" repeatCount="indefinite" />
+    </rect>
+    <text x="125" y="95" font-family="monospace" font-size="18" fill="#00FFFF" text-anchor="middle">Isaac Sim</text>
+    -->
+
+    <!-- Example Placeholder for a connection -->
+    <!--
+    <line x1="200" y1="90" x2="300" y2="90" stroke="#00FF00" stroke-width="1">
+        <animate attributeName="stroke-dasharray" values="10 5;0 15" dur="1s" repeatCount="indefinite" />
+    </line>
+    <text x="250" y="80" font-family="monospace" font-size="12" fill="#00FF00" text-anchor="middle">Sensor Data</text>
+    -->
+
+    <!-- More placeholders for other components and connections -->
+
+</svg>

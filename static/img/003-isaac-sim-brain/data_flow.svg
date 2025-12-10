@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Data Flow Diagram Template (Neon Cyber AI Style)</title>
+    <desc>
+        This SVG file serves as a template for data flow diagrams in a "Neon Cyber AI" style.
+        Expected elements:
+        -   **Color Palette**: Similar to the architecture diagram – dark background with vibrant neon accents.
+        -   **Nodes**: Representing data sources, processing units, or data sinks (e.g., Isaac Sim, VSLAM Node, Nvblox Node, Nav2 Planner, Robot Controller, Synthetic Dataset). Geometric shapes with glowing outlines.
+        -   **Edges/Arrows**: Emphasize direction of data flow with glowing, possibly animated arrows. Can indicate specific ROS 2 topics.
+        -   **Text**: Clear, concise labels for data types or topics, in neon fonts.
+        -   **Effects**: Flowing gradients along paths, subtle particle effects to represent data packets, background grid.
+        -   **Overall Feel**: Dynamic, showing continuous movement and transformation of data within the AI-Robot Brain.
+
+        This diagram should illustrate the flow of data (e.g., sensor streams, pose estimates, maps, control commands) between the various components identified in the `data-model.md` and `ros2_interfaces.md`.
+    </desc>
+
+    <!-- Example Placeholder for a data source/processor (e.g., Isaac Sim Sensors) -->
+    <!--
+    <rect x="50" y="50" width="150" height="80" fill="#1A2B3C" stroke="#FF00FF" stroke-width="2">
+        <animate attributeName="opacity" values="1;0.8;1" dur="3s" repeatCount="indefinite" />
+    </rect>
+    <text x="125" y="95" font-family="monospace" font-size="16" fill="#FF00FF" text-anchor="middle">Isaac Sim Sensors</text>
+    -->
+
+    <!-- Example Placeholder for a data flow (e.g., RGB Image) -->
+    <!--
+    <line x1="200" y1="90" x2="300" y2="90" stroke="#00FFFF" stroke-width="1.5" marker-end="url(#arrowhead)">
+        <animate attributeName="stroke-dasharray" values="5 5;0 10" dur="0.8s" repeatCount="indefinite" />
+    </line>
+    <text x="250" y="80" font-family="monospace" font-size="12" fill="#00FFFF" text-anchor="middle">/camera/image_raw</text>
+    -->
+
+    <!-- Define arrowhead marker for lines -->
+    <!--
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#00FFFF" />
+        </marker>
+    </defs>
+    -->
+    
+</svg>

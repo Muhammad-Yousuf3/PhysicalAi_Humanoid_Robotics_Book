@@ -1,0 +1,77 @@
+
+Panels:
+  - Class: rviz_default_plugins/Displays
+    Expanded:
+      - /TF: true
+      - /RobotModel: true
+    Name: Displays
+    Service Enabled: true
+    Show Header: true
+  - Class: rviz_default_plugins/Views
+    Expanded:
+      - /Current View: true
+    Name: Views
+    Service Enabled: true
+    Show Header: true
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/GlobalOptions
+      BackgroundColor: 99 99 99
+      Fixed Frame: base_link
+      Name: "Global Options"
+      Show Time: true
+      Start State: true
+      Target Frame: <Fixed Frame>
+      Update Period: 0.03
+      Update Topic: /tf
+      Value: true
+    - Class: rviz_default_plugins/RobotModel
+      Alpha: 0.5
+      Collision Enabled: false
+      Link Tree:
+        base_link: true
+        torso_link: true
+      Links:
+        All Links Enabled: true
+      Name: "RobotModel"
+      TF Prefix: ""
+      Update Enabled: true
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+  Enabled: true
+  Name: "root"
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+      Hide in Toolbar: false
+      Name: MoveCamera
+    - Class: rviz_default_plugins/Select
+      Hide in Toolbar: false
+      Name: Select
+    - Class: rviz_default_plugins/SetInitialPose
+      Hide in Toolbar: false
+      Name: SetInitialPose
+    - Class: rviz_default_plugins/FocusCamera
+      Hide in Toolbar: false
+      Name: FocusCamera
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 2.5
+      Focal Point: 0 0 0
+      Yaw: 0
+      Pitch: 0
+      Name: "Orbit"
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 768
+  Hide Left Dock: false
+  Hide Right Dock: false
+  QMainWindow State: 000000ff00000000fd0000000400000000000002b5000002e2fc020000000afb000000100044006900730070006c006100790073010000002800000155000000c000000001000000090056006900650077007300f800000001000002b500000060000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Width: 1366
+  X: 0
+  Y: 27

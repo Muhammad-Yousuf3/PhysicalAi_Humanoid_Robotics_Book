@@ -1,0 +1,38 @@
+# Neon Cyber AI Visual Templates - Design Notes
+
+This file serves as a placeholder for notes and guidelines regarding the "Neon Cyber AI" visual theme for diagrams and imagery within the "Robotic Nervous System" module.
+
+## Core Elements:
+
+-   **Color Palette**:
+    -   Primary: Deep blues (#000033), Electric purples (#660099), Bright neons (cyan, magenta, lime green for accents).
+    -   Secondary: Dark grays (#333333) for backgrounds, light grays (#CCCCCC) for subtle text/lines.
+-   **Typography**:
+    -   Monospaced fonts for code and labels (e.g., Fira Code, Source Code Pro).
+    -   Sans-serif for main text (e.g., Montserrat, Lato).
+-   **Styling**:
+    -   Glow effects for active components, data flow.
+    -   Subtle grid patterns or circuitry motifs in backgrounds.
+    -   Geometric shapes with sharp edges.
+    -   Minimalist icons.
+
+## Excalidraw Specifics:
+
+-   Use custom colors defined above.
+-   Ensure consistent line thickness and stroke styles.
+-   Group components logically.
+-   Add glow effects where applicable for emphasis.
+
+## Examples of elements to template:
+
+-   Nodes (circular or rectangular with glow)
+-   Topics (arrows with data labels, possibly glowing)
+-   Services (request/response boxes)
+-   Connections (lines, arrows, with varying thickness/glow for emphasis)
+-   Robot components (simplified geometric forms)
+
+## Guidelines for future diagrams:
+
+-   Maintain consistency in symbology.
+-   Diagrams should be clear, even without color, but enhanced by the theme.
+-   Export as SVG for scalability and web integration.

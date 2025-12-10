@@ -1,0 +1,93 @@
+/**
+ * Any CSS you add here will be applied to all pages of Docusaurus.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #1C274C; /* Dark blue for primary elements */
+  --ifm-color-primary-dark: #16203D;
+  --ifm-color-primary-darker: #121B33;
+  --ifm-color-primary-darkest: #0E1629;
+  --ifm-color-primary-light: #26335C;
+  --ifm-color-primary-lighter: #2C3A69;
+  --ifm-color-primary-lightest: #34467A;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability, increase line height for body text */
+body {
+  line-height: 1.6;
+}
+
+/* Adjust hero section colors for a clean look */
+.hero.hero--primary {
+  --ifm-hero-background-color: #f7f7f7; /* Light gray background */
+  --ifm-hero-text-color: #1C274C; /* Dark blue text */
+  --ifm-hero-color: #1C274C; /* Dark blue for other hero elements */
+}
+
+/* Dark mode adjustments */
+html[data-theme='dark'] {
+  --ifm-color-primary: #5A70A6; /* Lighter blue for dark mode primary */
+  --ifm-color-primary-dark: #4B5F92;
+  --ifm-color-primary-darker: #425585;
+  --ifm-color-primary-darkest: #3A4B7A;
+  --ifm-color-primary-light: #6A80BC;
+  --ifm-color-primary-lighter: #7B91D1;
+  --ifm-color-primary-lightest: #8CB1E7;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Dark mode hero section */
+  .hero.hero--primary {
+    --ifm-hero-background-color: #282a36; /* Darker background */
+    --ifm-hero-text-color: #f8f8f2; /* Light text */
+    --ifm-hero-color: #f8f8f2;
+  }
+}
+
+/* Ensure navbar title is always readable */
+.navbar__title {
+  font-weight: bold;
+  color: var(--ifm-navbar-link-color); /* Inherit from navbar links */
+}
+
+/* Remove border from navbar to clean up */
+.navbar {
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* Center the homepage content */
+.hero__title {
+  text-align: center;
+}
+
+.hero__subtitle {
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button--secondary {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border-color: var(--ifm-color-primary);
+}
+
+.button--secondary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: white;
+  border-color: var(--ifm-color-primary-dark);
+}
+
+/* Minimal changes for cleaner layout */
+.main-wrapper {
+  padding-top: 0 !important;
+}
+
+/* Remove default HomepageFeatures spacing */
+.homepageFeatures {
+  padding: 0;
+}
