@@ -42,7 +42,7 @@ const config: Config = {
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
           editUrl:
-            'https://github.com/muhammad-yousuf/PhysicalAi_Humanoid_Robotics_Book/tree/main/',
+            'https://github.com/Muhammad3-Yousuf/PhysicalAi_Humanoid_Robotics_Book/tree/main/',
         },
         blog: false, // Removed blog
         theme: {
@@ -71,7 +71,7 @@ const config: Config = {
           label: 'Book',
         },
         {
-          href: 'https://github.com/muhammad-yousuf/PhysicalAi_Humanoid_Robotics_Book',
+          href: 'https://github.com/Muhammad-Yousuf3/PhysicalAi_Humanoid_Robotics_Book',
           label: 'GitHub',
           position: 'right',
         },
