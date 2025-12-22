@@ -1,3 +1,4 @@
+import type { Config } from '@docusaurus/types';
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
@@ -8,6 +9,18 @@ const config: Config = {
 
   // Set the production url of your site here
   url: 'https://muhammad-yousuf.github.io',
+
+  scripts: [
+    {
+      src: "/runtime-config.js",
+      async: false,
+    },
+  ],  
+
+  // Custom fields for frontend access (e.g., API URL)
+  customFields: {
+    apiUrl: process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000/api',
+  },
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -30,6 +43,11 @@ const config: Config = {
       integrity:
         'sha384-odtC+0UGzzFL/6PNoE8rX/SPCSSL65cRO+j6HETArO/yemkLZltD825m+Cj0M7l6',
       crossorigin: 'anonymous',
+    },
+    // Urdu font for translations
+    {
+      href: 'https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap',
+      type: 'text/css',
     },
   ],
 

@@ -1,0 +1,223 @@
+/* Floating TranslateButton styles */
+
+.floatingContainer {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 100;
+  font-family: var(--ifm-font-family-base);
+  pointer-events: none;
+}
+
+/* Floating Action Button */
+.fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, background-color 0.2s;
+  pointer-events: auto;
+}
+
+.fab:hover {
+  transform: scale(1.05);
+  background: var(--ifm-color-primary-dark);
+}
+
+.fab svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+/* Panel */
+.panel {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  width: 380px;
+  max-width: calc(100vw - 48px);
+  max-height: 70vh;
+  background: var(--ifm-background-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.closeBtn:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.closeBtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.content {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.translateBtn {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.translateBtn:hover:not(:disabled) {
+  background: var(--ifm-color-primary-dark);
+}
+
+.translateBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pending {
+  text-align: center;
+}
+
+.pending p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.progressBar {
+  height: 4px;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--ifm-color-primary);
+  animation: progress 2s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+    margin-left: 0%;
+  }
+  50% {
+    width: 30%;
+    margin-left: 35%;
+  }
+  100% {
+    width: 0%;
+    margin-left: 100%;
+  }
+}
+
+.error {
+  padding: 10px 14px;
+  background: var(--ifm-color-danger-lightest);
+  color: var(--ifm-color-danger-darkest);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.translatedSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.urduText {
+  font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+  font-size: 18px;
+  line-height: 2;
+  direction: rtl;
+  text-align: right;
+  white-space: pre-wrap;
+  padding: 12px;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.clearBtn {
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--ifm-color-emphasis-600);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clearBtn:hover {
+  border-color: var(--ifm-color-danger);
+  color: var(--ifm-color-danger);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .floatingContainer {
+    bottom: 16px;
+    left: 16px;
+  }
+
+  .panel {
+    width: calc(100vw - 32px);
+    bottom: 65px;
+    left: -8px;
+  }
+
+  .fab {
+    width: 50px;
+    height: 50px;
+  }
+}

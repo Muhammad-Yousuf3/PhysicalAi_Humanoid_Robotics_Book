@@ -91,3 +91,6 @@ html[data-theme='dark'] {
 .homepageFeatures {
   padding: 0;
 }
+
+/* Import NavbarTranslateButton styles */
+@import url('../components/NavbarTranslateButton/styles.css');
