@@ -5,29 +5,19 @@ import remarkMath from "remark-math";
 const config: Config = {
   title: 'PhysicalAI Humanoid Robotics',
   tagline: 'AI Systems for Embodied Intelligence',
-  favicon: 'img/favicon.ico', // Will be replaced with a blank favicon
+  favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-  url: 'https://muhammad-yousuf.github.io',
-
-  scripts: [
-    {
-      src: "/runtime-config.js",
-      async: false,
-    },
-  ],  
-
-  // Custom fields for frontend access (e.g., API URL)
-  customFields: {
-    apiUrl: process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000/api',
-  },
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // Production URL of your site on Vercel
+  url: 'https://physical-ai-humanoid-robotics-book-navy.vercel.app',
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  organizationName: 'muhammad-yousuf', // Usually your GitHub org/user name.
-  projectName: 'PhysicalAi_Humanoid_Robotics_Book', // Usually your repo name.
+  // Remove runtime-config script; we will use env via customFields
+  // scripts: [{ src: "/runtime-config.js", async: false }], // Removed
+
+  // Custom fields for frontend access (API URL)
+  customFields: {
+    apiUrl: process.env.REACT_APP_API_URL || 'https://ragchatbotbook-production.up.railway.app/api',
+  },
 
   onBrokenLinks: 'throw',
 
@@ -62,11 +52,11 @@ const config: Config = {
           editUrl:
             'https://github.com/Muhammad3-Yousuf/PhysicalAi_Humanoid_Robotics_Book/tree/main/',
         },
-        blog: false, // Removed blog
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
-      } 
+      },
     ],
   ],
 
@@ -76,10 +66,10 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'PhysicalAI Humanoid Robotics', // Simplified title
+      title: 'PhysicalAI Humanoid Robotics',
       logo: {
         alt: 'PhysicalAI Humanoid Robotics Logo',
-        src: 'img/logo.png', // Keeping a placeholder SVG, will modify later if needed.
+        src: 'img/logo.png',
       },
       items: [
         {
@@ -97,11 +87,10 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      links: [], // Removed all links to simplify
+      links: [],
       copyright: `Copyright © ${new Date().getFullYear()} Muhammad Yousuf. Built with Docusaurus.`,
     },
-
-  } 
+  },
 };
 
 export default config;
