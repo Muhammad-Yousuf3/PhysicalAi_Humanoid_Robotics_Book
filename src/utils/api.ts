@@ -12,7 +12,7 @@ import type {
 } from '../types/api';
 
 // Default API URL - can be overridden via docusaurus.config.ts customFields or runtime config
-const DEFAULT_API_URL = 'http://127.0.0.1:8000/api';
+const DEFAULT_API_URL = 'https://ragchatbotbook-production.up.railway.app/api';
 
 // Get API URL from Docusaurus custom fields, runtime config, or fallback
 function getApiUrl(): string {
