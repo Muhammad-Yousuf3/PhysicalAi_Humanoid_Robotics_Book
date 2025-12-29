@@ -16,7 +16,7 @@ const config: Config = {
 
   // Custom fields for frontend access (API URL)
   customFields: {
-    apiUrl: process.env.REACT_APP_API_URL || 'https://ragchatbotbook-production.up.railway.app/api',
+    apiUrl: process.env.REACT_APP_API_URL || 'https://muhammadyousuf333-rag-chatbot-with-book.hf.space',
   },
 
   onBrokenLinks: 'throw',
