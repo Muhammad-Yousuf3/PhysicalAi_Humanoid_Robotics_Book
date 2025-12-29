@@ -12,7 +12,7 @@ import type {
 } from '../types/api';
 
 // Default API URL - can be overridden via docusaurus.config.ts customFields or runtime config
-const DEFAULT_API_URL = 'https://muhammadyousuf333-rag-chatbot-with-book.hf.space';
+const DEFAULT_API_URL = 'https://muhammadyousuf333-rag-chatbot-with-book.hf.space/api';
 
 // Get API URL from Docusaurus custom fields, runtime config, or fallback
 function getApiUrl(): string {
