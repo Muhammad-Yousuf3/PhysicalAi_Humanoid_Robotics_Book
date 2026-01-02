@@ -1,14 +1,11 @@
 /**
  * Floating ChatWidget component for RAG-powered Q&A.
  * Integrates with backend /api/chat and /api/chat/selected endpoints.
- * Includes chat history for authenticated users.
  */
 
 import { useState, useRef, useEffect, type KeyboardEvent } from 'react';
 import { useChat, type Message } from '../../hooks/useChat';
 import { useSelectedText } from '../../hooks/useSelectedText';
-import { useChatHistory, type ConversationSummary } from '../../hooks/useChatHistory';
-import { useAuthContext } from '../../hooks/useAuth';
 import styles from './styles.module.css';
 
 // Icons as inline SVG for simplicity
@@ -42,17 +39,6 @@ const BookIcon = () => (
   </svg>
 );
 
-const HistoryIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z" />
-  </svg>
-);
-
-const BackIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-  </svg>
-);
 
 interface MessageBubbleProps {
   message: Message;
@@ -87,7 +73,6 @@ function MessageBubble({ message }: MessageBubbleProps) {
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [showHistory, setShowHistory] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -98,36 +83,10 @@ export default function ChatWidget() {
     sendMessage,
     sendSelectedTextMessage,
     clearChat,
-    setMessagesFromHistory,
-    setConversationId,
   } = useChat();
 
   const { selectedText, hasSelection, clearSelection } = useSelectedText();
   const [useSelection, setUseSelection] = useState(false);
-
-  // Auth context for checking if user is logged in
-  let isAuthenticated = false;
-  try {
-    const auth = useAuthContext();
-    isAuthenticated = auth.isAuthenticated;
-  } catch {
-    // Auth context not available
-  }
-
-  // Chat history
-  const {
-    conversations,
-    isLoading: historyLoading,
-    fetchConversations,
-    fetchConversation,
-  } = useChatHistory();
-
-  // Load history when opening history panel
-  useEffect(() => {
-    if (showHistory && isAuthenticated) {
-      fetchConversations();
-    }
-  }, [showHistory, isAuthenticated, fetchConversations]);
 
   // Track if user has selected text while chat is open
   useEffect(() => {
@@ -143,10 +102,10 @@ export default function ChatWidget() {
 
   // Focus input when chat opens
   useEffect(() => {
-    if (isOpen && !showHistory) {
+    if (isOpen) {
       inputRef.current?.focus();
     }
-  }, [isOpen, showHistory]);
+  }, [isOpen]);
 
   const handleSend = async () => {
     if (!inputValue.trim() || isLoading) return;
@@ -177,28 +136,6 @@ export default function ChatWidget() {
 
   const toggleChat = () => {
     setIsOpen((prev) => !prev);
-    if (!isOpen) {
-      setShowHistory(false);
-    }
-  };
-
-  const toggleHistory = () => {
-    setShowHistory((prev) => !prev);
-  };
-
-  const loadConversation = async (conv: ConversationSummary) => {
-    const detail = await fetchConversation(conv.id);
-    if (detail) {
-      const loadedMessages: Message[] = detail.messages.map((msg: any) => ({
-        id: msg.id,
-        role: msg.role as 'user' | 'assistant',
-        content: msg.content,
-        timestamp: new Date(msg.created_at),
-      }));
-      setMessagesFromHistory(loadedMessages);
-      setConversationId(conv.id);
-      setShowHistory(false);
-    }
   };
 
   return (
@@ -207,40 +144,16 @@ export default function ChatWidget() {
         <div className={styles.chatWindow}>
           {/* Header */}
           <div className={styles.header}>
-            {showHistory ? (
+            <h3 className={styles.headerTitle}>Book Assistant</h3>
+            <div className={styles.headerActions}>
               <button
                 className={styles.headerButton}
-                onClick={toggleHistory}
-                title="Back to chat"
-                aria-label="Back to chat"
+                onClick={clearChat}
+                title="New chat"
+                aria-label="Start new chat"
               >
-                <BackIcon />
+                <ClearIcon />
               </button>
-            ) : null}
-            <h3 className={styles.headerTitle}>
-              {showHistory ? 'Chat History' : 'Book Assistant'}
-            </h3>
-            <div className={styles.headerActions}>
-              {!showHistory && isAuthenticated && (
-                <button
-                  className={styles.headerButton}
-                  onClick={toggleHistory}
-                  title="View history"
-                  aria-label="View chat history"
-                >
-                  <HistoryIcon />
-                </button>
-              )}
-              {!showHistory && (
-                <button
-                  className={styles.headerButton}
-                  onClick={clearChat}
-                  title="New chat"
-                  aria-label="Start new chat"
-                >
-                  <ClearIcon />
-                </button>
-              )}
               <button
                 className={styles.headerButton}
                 onClick={toggleChat}
@@ -252,54 +165,9 @@ export default function ChatWidget() {
             </div>
           </div>
 
-          {/* Messages or History */}
+          {/* Messages */}
           <div className={styles.messagesContainer}>
-            {showHistory ? (
-              // History Panel
-              <div className={styles.historyPanel}>
-                {historyLoading ? (
-                  <div className={styles.loadingIndicator}>
-                    <div className={styles.loadingDots}>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                    <span>Loading history...</span>
-                  </div>
-                ) : conversations.length === 0 ? (
-                  <div className={styles.emptyState}>
-                    <HistoryIcon />
-                    <p>No conversation history yet.</p>
-                    <p style={{ marginTop: 8, fontSize: 12 }}>
-                      Your conversations will appear here.
-                    </p>
-                  </div>
-                ) : (
-                  conversations.map((conv) => (
-                    <button
-                      key={conv.id}
-                      className={styles.historyItem}
-                      onClick={() => loadConversation(conv)}
-                    >
-                      <div className={styles.historyItemHeader}>
-                        <span className={styles.historyItemMode}>
-                          {conv.mode === 'selected_text' ? 'Selected Text' : 'Full Book'}
-                        </span>
-                        <span className={styles.historyItemCount}>
-                          {conv.message_count} messages
-                        </span>
-                      </div>
-                      <p className={styles.historyItemPreview}>
-                        {conv.last_message_preview || 'No messages'}
-                      </p>
-                      <span className={styles.historyItemDate}>
-                        {new Date(conv.updated_at).toLocaleDateString()}
-                      </span>
-                    </button>
-                  ))
-                )}
-              </div>
-            ) : messages.length === 0 ? (
+            {messages.length === 0 ? (
               <div className={styles.emptyState}>
                 <BookIcon />
                 <p>

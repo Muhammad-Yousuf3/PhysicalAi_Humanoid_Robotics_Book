@@ -1,5 +1,5 @@
 /**
- * Swizzled NavbarContent to add AuthButtons.
+ * Swizzled NavbarContent with translation button.
  * Based on @docusaurus/theme-classic NavbarContent.
  */
 
@@ -14,7 +14,6 @@ import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
 import SearchBar from '@theme/SearchBar';
-import AuthButtons from '../../../components/AuthButtons';
 import { NavbarTranslateButton } from '../../../components/NavbarTranslateButton';
 import styles from './styles.module.css';
 
@@ -83,8 +82,7 @@ export default function NavbarContent() {
               <SearchBar />
             </NavbarSearch>
           )}
-          <NavbarTranslateButton variant="minimal" showLabel={true} />
-          <AuthButtons />
+          <NavbarTranslateButton />
         </>
       }
     />

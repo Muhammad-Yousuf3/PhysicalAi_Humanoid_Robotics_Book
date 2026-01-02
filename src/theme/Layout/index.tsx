@@ -1,6 +1,6 @@
 /**
  * Custom Layout component for Docusaurus.
- * Wraps the original Layout and adds ChatWidget and TranslateButton within the React tree.
+ * Wraps the original Layout and adds ChatWidget within the React tree.
  * Uses BrowserOnly to prevent SSR hydration issues.
  */
 
@@ -18,13 +18,7 @@ export default function Layout(props: Props): JSX.Element {
       <BrowserOnly fallback={null}>
         {() => {
           const ChatWidget = require('../../components/ChatWidget').default;
-          const FloatingTranslateButton = require('../../components/TranslateButton/FloatingTranslateButton').default;
-          return (
-            <>
-              <ChatWidget />
-              <FloatingTranslateButton />
-            </>
-          );
+          return <ChatWidget />;
         }}
       </BrowserOnly>
     </OriginalLayout>

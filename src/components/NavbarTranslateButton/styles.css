@@ -7,6 +7,7 @@
   position: relative;
   display: inline-flex;
   align-items: center;
+  margin-left: 8px;
 }
 
 /* Button base styles */
@@ -14,28 +15,46 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  background-color: transparent;
-  color: inherit;
-  font-size: 14px;
-  font-weight: 500;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1.5px solid var(--ifm-color-primary);
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--ifm-color-primary-lightest) 0%, transparent 100%);
+  color: var(--ifm-color-primary);
+  font-size: 13px;
+  font-weight: 600;
   line-height: 1;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease;
   user-select: none;
   white-space: nowrap;
 }
 
 .translate-button:focus {
-  outline: 2px solid var(--ifm-color-primary, #2e7d32);
+  outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
 }
 
 .translate-button:focus:not(:focus-visible) {
   outline: none;
+}
+
+.translate-button:hover:not(:disabled) {
+  background: var(--ifm-color-primary);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+/* Active state - when translation is enabled */
+.translate-button--active {
+  background: var(--ifm-color-primary);
+  color: #ffffff;
+  border-color: var(--ifm-color-primary-dark);
+}
+
+.translate-button--active:hover:not(:disabled) {
+  background: var(--ifm-color-primary-dark);
 }
 
 /* Button content */
@@ -52,13 +71,14 @@
 }
 
 .translate-button__icon--active {
-  color: var(--ifm-color-primary, #2e7d32);
+  color: inherit;
 }
 
 /* Label */
 .translate-button__label {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 /* Spinner */
@@ -76,56 +96,11 @@
   }
 }
 
-/* Variant: default */
-.translate-button--default {
-  background-color: var(--ifm-color-emphasis-100, #f5f5f5);
-  color: var(--ifm-font-color-base, #1c1e21);
-}
-
-.translate-button--default:hover:not(:disabled) {
-  background-color: var(--ifm-color-emphasis-200, #ebebeb);
-}
-
-.translate-button--default.translate-button--active {
-  background-color: var(--ifm-color-primary, #2e7d32);
-  color: #ffffff;
-}
-
-.translate-button--default.translate-button--active:hover:not(:disabled) {
-  background-color: var(--ifm-color-primary-dark, #256029);
-}
-
-/* Variant: minimal */
-.translate-button--minimal {
-  padding: 6px 12px;
-  background-color: transparent;
-  color: var(--ifm-navbar-link-color, inherit);
-}
-
-.translate-button--minimal:hover:not(:disabled) {
-  background-color: var(--ifm-color-emphasis-100, rgba(0, 0, 0, 0.05));
-}
-
-.translate-button--minimal.translate-button--active {
-  color: var(--ifm-color-primary, #2e7d32);
-}
-
-/* Variant: outline */
+/* All variants now use the same enhanced style */
+.translate-button--default,
+.translate-button--minimal,
 .translate-button--outline {
-  border: 1.5px solid var(--ifm-color-emphasis-300, #d4d4d4);
-  background-color: transparent;
-  color: var(--ifm-font-color-base, #1c1e21);
-}
-
-.translate-button--outline:hover:not(:disabled) {
-  border-color: var(--ifm-color-primary, #2e7d32);
-  background-color: var(--ifm-color-primary-lightest, #e8f5e9);
-}
-
-.translate-button--outline.translate-button--active {
-  border-color: var(--ifm-color-primary, #2e7d32);
-  background-color: var(--ifm-color-primary, #2e7d32);
-  color: #ffffff;
+  /* Uses base styles */
 }
 
 /* Loading state */
@@ -196,23 +171,20 @@
 }
 
 /* Dark mode support */
-html[data-theme='dark'] .translate-button--default {
-  background-color: var(--ifm-color-emphasis-200, #2a2a2a);
-  color: var(--ifm-font-color-base, #e3e3e3);
+html[data-theme='dark'] .translate-button {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15) 0%, transparent 100%);
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary-lighter);
 }
 
-html[data-theme='dark'] .translate-button--default:hover:not(:disabled) {
-  background-color: var(--ifm-color-emphasis-300, #3a3a3a);
+html[data-theme='dark'] .translate-button:hover:not(:disabled) {
+  background: var(--ifm-color-primary);
+  color: #ffffff;
 }
 
-html[data-theme='dark'] .translate-button--outline {
-  border-color: var(--ifm-color-emphasis-400, #4a4a4a);
-  color: var(--ifm-font-color-base, #e3e3e3);
-}
-
-html[data-theme='dark'] .translate-button--outline:hover:not(:disabled) {
-  background-color: var(--ifm-color-primary-darkest, #1a4d1d);
-  border-color: var(--ifm-color-primary, #43a047);
+html[data-theme='dark'] .translate-button--active {
+  background: var(--ifm-color-primary);
+  color: #ffffff;
 }
 
 html[data-theme='dark'] .translate-button__error {
@@ -227,7 +199,23 @@ html[data-theme='dark'] .translate-button__error::before {
   border-top-color: #6a1616;
 }
 
-/* Responsive */
+/* Responsive - Mobile */
+@media (max-width: 996px) {
+  .translate-button-wrapper {
+    margin-left: 4px;
+  }
+
+  .translate-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .translate-button__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .translate-button__label {
     display: none;
@@ -235,10 +223,26 @@ html[data-theme='dark'] .translate-button__error::before {
 
   .translate-button {
     padding: 8px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+  }
+
+  .translate-button__content {
+    gap: 0;
   }
 
   .translate-button__error {
     max-width: 200px;
+    right: 0;
+    left: auto;
+    transform: none;
+  }
+
+  .translate-button__error::before {
+    left: auto;
+    right: 12px;
+    transform: rotate(45deg);
   }
 
   .translate-button__error-message {
